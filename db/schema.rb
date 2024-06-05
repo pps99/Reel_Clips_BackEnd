@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2024_06_03_080415) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clips", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -19,7 +22,7 @@ ActiveRecord::Schema.define(version: 2024_06_03_080415) do
     t.string "video_definition"
     t.string "start_timecode"
     t.string "end_timecode"
-    t.integer "show_reel_id", null: false
+    t.bigint "show_reel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["show_reel_id"], name: "index_clips_on_show_reel_id"
